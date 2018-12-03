@@ -177,8 +177,8 @@ class PluginBlocktypeTwitter extends SystemBlocktype {
     					'time_ago' => $time_ago,
     					'tweeted_on' => get_string('twitter_tweeted_on','blocktype.twitter')." ".$date,
     	
-    					'profile_url' =>"http://twitter.com/intent/user?screen_name=".stripslashes($data->user->screen_name),
-    					'url' => "http://twitter.com/#!/".$name."/status/".$id,
+    					'profile_url' =>"https://twitter.com/intent/user?screen_name=".stripslashes($data->user->screen_name),
+    					'url' => "https://twitter.com/#!/".$name."/status/".$id,
     	
     					'retweet_url' =>  "https://twitter.com/intent/retweet?tweet_id=$id", 
         				'reply_url' =>"https://twitter.com/intent/tweet?in_reply_to=$id", 
@@ -218,14 +218,14 @@ private static function how_long_ago( $date ) {
        // Autolink hashtags 
         $tweet = preg_replace(
                 '/(^|[^0-9A-Z&\/]+)(#|\xef\xbc\x83)([0-9A-Z_]*[A-Z_]+[a-z0-9_\xc0-\xd6\xd8-\xf6\xf8\xff]*)/iu',
-                '${1}<a href="http://twitter.com/search?q=%23${3}" title="#${3}"><b>${2}${3}</b></a>',
+                '${1}<a href="https://twitter.com/search?q=%23${3}" title="#${3}"><b>${2}${3}</b></a>',
                 $tweet
         );
 
         // Autolink just usernames 
         $tweet = preg_replace(
                 '/([^a-zA-Z0-9_]|^)([@\xef\xbc\xa0]+)([a-zA-Z0-9_]{1,20})(\/[a-zA-Z][a-zA-Z0-9\x80-\xff-]{0,79})?/u',
-                '${1}@<a href="http://twitter.com/intent/user?screen_name=${3}" class="twitter-action"><b>${3}</b></a>',
+                '${1}@<a href="https://twitter.com/intent/user?screen_name=${3}" class="twitter-action"><b>${3}</b></a>',
                 $tweet
         );
 
